@@ -76,19 +76,25 @@ def info(id: str, *rest: tuple) -> None:
 
 
 @safe
-def encrypt(id, plaintext, *rest):
+def encrypt(id: str, plaintext: int, *rest: tuple) -> None:
+    '''Encrypts the <plaintext> with the keys in <id>'''
+    
     global keys
     print(core.encrypt(int(plaintext), keys[id]['e'], keys[id]['n']))
 
 
 @safe
-def decrypt(id, ciphertext, *rest):
+def decrypt(id: str, ciphertext: int, *rest: tuple) -> None:
+    '''Decrypt the <plaintext> with the keys in <id>'''
+    
     global keys
     print(core.decrypt(int(ciphertext), keys[id]['d'], keys[id]['n']))
 
 
 @safe
-def end(id, *rest):
+def end(id: str, *rest: tuple) -> None:
+    '''End session <id>'''
+    
     global keys
     del keys[id]
     print('{} ended'.format(id))
